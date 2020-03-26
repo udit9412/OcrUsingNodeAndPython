@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
- 
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +8,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 })
  
 export class AppComponent implements OnInit {
+  @BlockUI() blockUI: NgBlockUI;
   title:string=null;
   fileData: File = null;
   previewUrl:any = null;
@@ -54,6 +55,7 @@ export class AppComponent implements OnInit {
       formData.append('myFile', this.fileData);
       formData.append('id', emp_id);
       // console.log("emp_id:"+emp_id)
+      this.blockUI.start('Loading...');
       this.http.post('http://localhost:3000/uploadfile', formData)
         .subscribe(res => {
           console.log(res);
@@ -65,6 +67,7 @@ export class AppComponent implements OnInit {
             this.data.ClaimFlag="Pending"
           }
           this.ModelTable=true;
+          this.blockUI.stop(); // Stop blocking
           // this.TriggerModel=false;
           // this.uploadeddata=res;
           // this.UploadTable=true;
@@ -89,12 +92,14 @@ export class AppComponent implements OnInit {
       formData.append('myFile', this.fileData);
       formData.append('id', emp_id);
       // console.log("emp_id:"+emp_id)
+      this.blockUI.start('Loading...');
       this.http.post('http://localhost:3000/uploadfile', formData)
         .subscribe(res => {
           console.log(res);
           this.TriggerModel=false;
           this.uploadeddata=res;
           this.UploadTable=true;
+          this.blockUI.stop(); // Stop blocking
           // alert('SUCCESS !!');
           // this.uploadedFilePath = res.data.Filepath;
         })

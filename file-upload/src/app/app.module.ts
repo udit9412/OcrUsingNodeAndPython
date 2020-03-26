@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 
 import { AppComponent } from './app.component';
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    BlockUIModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
