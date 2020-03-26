@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <script>
+
+      /* Practical use case of closures*/
+
+      let seq = (function(){
+        let count = 0;
+        return function(){
+          count++;
+          return count;
+        }
+      })()
+
+      const debouce = function(func, timeout) {
+        let timeData;
+        return function(){
+          const context = this
+          const args = arguments
+          console.log('this is ', this, 'arguments is ', arguments);
+          clearInterval(timeData);
+          timeData = setTimeout(()=>{
+            //func.apply(context, args)
+            func(args)
+          }, timeout)
+        }
+      }  
+
+      function hello(message, count){
+        setTimeout(function(){
+          console.log(`messge is ${message} ${JSON.stringify(arguments)}`);
+        }, 3000)
+      }
+
+      const pressClick = function(){
+        isClicked = false;
+        return function(){
+          isClicked = true;
+          setTimeout(function(){
+            console.log('Press click execution done!!')
+            isClicked = false;
+          }, 5000)
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function(event) {
+        console.log("DOM fully loaded and parsed");
+          
+        
+        const btnPress = document.getElementById("btnPress");
+        const txtSearch = document.getElementById("search");
+        txtSearch.addEventListener('keyup', debouce(function(event){
+          console.log(event);
+          console.log(this);
+          console.log(`searching for ${txtSearch.value}`)
+        }, 2000));
+      });
+
+      
+
+    </script>
+  </head>
+  <body>
+    <h2>
+      Hello World
+    </h2>
+    <input id="search" type="text" />
+    <button id="btnPress">
+      Press
+    </button>
+  </body>
+</html>

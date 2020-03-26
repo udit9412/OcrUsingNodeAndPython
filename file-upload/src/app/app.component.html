@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="row main-div" style="text-align: center;">
+      <div class="col-md-6 offset-md-3 wrapper">
+        <mat-card style="text-align: center;">
+
+          <table style="margin-left: 100px;">
+        <div class="form-group">
+          <tr>
+            <td>
+          <label class="col-md-4"><strong>Employee ID</strong></label>
+        </td>
+        <td>
+          <input style="margin-left: 20px;" type="text" name="emp_id" class="form-control"  #emp_id />
+        </td>  
+        </tr>
+        </div>
+        <br>
+        <tr>
+          <!-- <h3>Choose File</h3>             -->
+          <div class="form-group">
+              <input type="file" id="file" name="image" (change)="fileProgress($event)" />
+              <label for="file" class="btn-2">Upload</label>
+          </div>
+        </tr>
+        <tr>
+          <div *ngIf="fileUploadProgress">
+              Upload progress: {{ fileUploadProgress }}
+          </div>
+          <div class="image-preview mb-3" *ngIf="previewUrl">
+              <img [src]="previewUrl" height="300" />                 
+          </div>
+        </tr>
+          <div class="form-group">
+            <br>
+            <tr>
+              <td>
+              <button class="btn btn-primary" style="font-size: 15px; padding: 3px; background-color:floralwhite; margin-left: 50px;"  (click)="onSubmit(emp_id.value)">Submit</button>
+              </td>
+              <td>
+              &nbsp;&nbsp;&nbsp;
+
+              <button  class="btn btn-primary" style="font-size: 15px; padding: 3px; background-color:floralwhite;" onClick="window.location.reload()"  >Reset</button>
+            </td></tr>
+            </div>
+      </table>
+    </mat-card>
+      </div>
+    <div class="col-md-6 offset-md-3 wrapper">
+    <mat-card *ngIf="UploadTable">
+      <table cellspacing="10" style="margin-left: 117px;">
+        <caption style="font-weight: 900; font-size: 20px;">Details from Bill</caption>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Employee Id:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{uploadeddata.EmpId}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            GST:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{uploadeddata.GST}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Price:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{uploadeddata.Price}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Date:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{uploadeddata.Date}}
+          </td>
+        </tr>
+        
+      </table>
+      <button [disabled]="TriggerModel" class="btn btn-primary" style="font-size: 15px; padding: 3px; background-color:floralwhite;"  (click)="testModel(emp_id.value)">Test Model</button>
+    </mat-card>
+    <br><br>
+    <mat-card *ngIf="ModelTable">
+      <table cellspacing="10" style="margin-left: 117px;">
+        <caption style="font-weight: 900; font-size: 20px;">Status of Claim</caption>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Employee Id:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{data.EmpId}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Education:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{data.Education}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Claim Type:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{data.ClaimType}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Claim Amount:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{data.TotalClaimAmount}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; text-align: right;">
+            Status:
+          </td>
+          <td style="margin-left: 10px;text-align: left;">
+            {{data.ClaimFlag}}
+          </td>
+        </tr>
+        
+      </table>
+    </mat-card>
+  </div>
+  </div>
+  </div>
