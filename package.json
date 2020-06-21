@@ -1,0 +1,22 @@
+{
+  "name": "ocrusingnodeandpython",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udit9412/OcrUsingNodeAndPython.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/udit9412/OcrUsingNodeAndPython/issues"
+  },
+  "homepage": "https://github.com/udit9412/OcrUsingNodeAndPython#readme",
+  "dependencies": {
+    "@angular-devkit/schematics": "^9.1.9"
+  }
+}

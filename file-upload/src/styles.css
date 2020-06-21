@@ -10,6 +10,7 @@ body {
     margin: 1rem 0;
     text-align: center;
     background-color: #e65c00;
+    background-image: url("used.jpg");
   /* background-image: linear-gradient(0deg, #e65c00,#F9D423 63%, ); */
   
   }
